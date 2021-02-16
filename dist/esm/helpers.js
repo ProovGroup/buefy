@@ -1,14 +1,14 @@
-import { _ as _defineProperty, a as _objectSpread2, b as _typeof } from './chunk-1fafdf15.js'
+import { _ as _defineProperty, a as _objectSpread2, b as _typeof } from './chunk-1fafdf15.js';
 
 /**
  * +/- function to native math sign
  */
 function signPoly(value) {
-    if (value < 0) return -1
-    return value > 0 ? 1 : 0
+  if (value < 0) return -1;
+  return value > 0 ? 1 : 0;
 }
 
-var sign = Math.sign || signPoly
+var sign = Math.sign || signPoly;
 /**
  * Checks if the flag is set
  * @param val
@@ -17,7 +17,7 @@ var sign = Math.sign || signPoly
  */
 
 function hasFlag(val, flag) {
-    return (val & flag) === flag
+  return (val & flag) === flag;
 }
 /**
  * Native modulo bug with negative numbers
@@ -26,8 +26,9 @@ function hasFlag(val, flag) {
  * @returns {number}
  */
 
+
 function mod(n, mod) {
-    return (n % mod + mod) % mod
+  return (n % mod + mod) % mod;
 }
 /**
  * Asserts a value is beetween min and max
@@ -37,108 +38,109 @@ function mod(n, mod) {
  * @returns {number}
  */
 
+
 function bound(val, min, max) {
-    return Math.max(min, Math.min(max, val))
+  return Math.max(min, Math.min(max, val));
 }
 /**
  * Get value of an object property/path even if it's nested
  */
 
 function getValueByPath(obj, path) {
-    return path.split('.').reduce(function (o, i) {
-        return o ? o[i] : null
-    }, obj)
+  return path.split('.').reduce(function (o, i) {
+    return o ? o[i] : null;
+  }, obj);
 }
 /**
  * Extension of indexOf method by equality function if specified
  */
 
 function indexOf(array, obj, fn) {
-    if (!array) return -1
-    if (!fn || typeof fn !== 'function') return array.indexOf(obj)
+  if (!array) return -1;
+  if (!fn || typeof fn !== 'function') return array.indexOf(obj);
 
-    for (var i = 0; i < array.length; i++) {
-        if (fn(array[i], obj)) {
-            return i
-        }
+  for (var i = 0; i < array.length; i++) {
+    if (fn(array[i], obj)) {
+      return i;
     }
+  }
 
-    return -1
+  return -1;
 }
 /**
  * Merge function to replace Object.assign with deep merging possibility
  */
 
 var isObject = function isObject(item) {
-    return _typeof(item) === 'object' && !Array.isArray(item)
-}
+  return _typeof(item) === 'object' && !Array.isArray(item);
+};
 
 var mergeFn = function mergeFn(target, source) {
-    var deep = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false
+  var deep = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-    if (deep || !Object.assign) {
-        var isDeep = function isDeep(prop) {
-            return isObject(source[prop]) && target !== null && target.hasOwnProperty(prop) && isObject(target[prop])
-        }
+  if (deep || !Object.assign) {
+    var isDeep = function isDeep(prop) {
+      return isObject(source[prop]) && target !== null && target.hasOwnProperty(prop) && isObject(target[prop]);
+    };
 
-        var replaced = Object.getOwnPropertyNames(source).map(function (prop) {
-            return _defineProperty({}, prop, isDeep(prop) ? mergeFn(target[prop], source[prop], deep) : source[prop])
-        }).reduce(function (a, b) {
-            return _objectSpread2({}, a, {}, b)
-        }, {})
-        return _objectSpread2({}, target, {}, replaced)
-    } else {
-        return Object.assign(target, source)
-    }
-}
+    var replaced = Object.getOwnPropertyNames(source).map(function (prop) {
+      return _defineProperty({}, prop, isDeep(prop) ? mergeFn(target[prop], source[prop], deep) : source[prop]);
+    }).reduce(function (a, b) {
+      return _objectSpread2({}, a, {}, b);
+    }, {});
+    return _objectSpread2({}, target, {}, replaced);
+  } else {
+    return Object.assign(target, source);
+  }
+};
 
-var merge = mergeFn
+var merge = mergeFn;
 /**
  * Mobile detection
  * https://www.abeautifulsite.net/detecting-mobile-devices-with-javascript
  */
 
 var isMobile = {
-    Android: function Android() {
-        return typeof window !== 'undefined' && window.navigator.userAgent.match(/Android/i)
-    },
-    BlackBerry: function BlackBerry() {
-        return typeof window !== 'undefined' && window.navigator.userAgent.match(/BlackBerry/i)
-    },
-    iOS: function iOS() {
-        return typeof window !== 'undefined' && window.navigator.userAgent.match(/iPhone|iPad|iPod/i)
-    },
-    Opera: function Opera() {
-        return typeof window !== 'undefined' && window.navigator.userAgent.match(/Opera Mini/i)
-    },
-    Windows: function Windows() {
-        return typeof window !== 'undefined' && window.navigator.userAgent.match(/IEMobile/i)
-    },
-    any: function any() {
-        return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()
-    }
-}
+  Android: function Android() {
+    return typeof window !== 'undefined' && window.navigator.userAgent.match(/Android/i);
+  },
+  BlackBerry: function BlackBerry() {
+    return typeof window !== 'undefined' && window.navigator.userAgent.match(/BlackBerry/i);
+  },
+  iOS: function iOS() {
+    return typeof window !== 'undefined' && window.navigator.userAgent.match(/iPhone|iPad|iPod/i);
+  },
+  Opera: function Opera() {
+    return typeof window !== 'undefined' && window.navigator.userAgent.match(/Opera Mini/i);
+  },
+  Windows: function Windows() {
+    return typeof window !== 'undefined' && window.navigator.userAgent.match(/IEMobile/i);
+  },
+  any: function any() {
+    return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
+  }
+};
 function removeElement(el) {
-    if (typeof el.remove !== 'undefined') {
-        el.remove()
-    } else if (typeof el.parentNode !== 'undefined' && el.parentNode !== null) {
-        el.parentNode.removeChild(el)
-    }
+  if (typeof el.remove !== 'undefined') {
+    el.remove();
+  } else if (typeof el.parentNode !== 'undefined' && el.parentNode !== null) {
+    el.parentNode.removeChild(el);
+  }
 }
 function createAbsoluteElement(el) {
-    var root = document.createElement('div')
-    root.style.position = 'absolute'
-    root.style.left = '0px'
-    root.style.top = '0px'
-    root.style.width = '100%'
-    var wrapper = document.createElement('div')
-    root.appendChild(wrapper)
-    wrapper.appendChild(el)
-    document.body.appendChild(root)
-    return root
+  var root = document.createElement('div');
+  root.style.position = 'absolute';
+  root.style.left = '0px';
+  root.style.top = '0px';
+  root.style.width = '100%';
+  var wrapper = document.createElement('div');
+  root.appendChild(wrapper);
+  wrapper.appendChild(el);
+  document.body.appendChild(root);
+  return root;
 }
 function isVueComponent(c) {
-    return c && c._isVue
+  return c && c._isVue;
 }
 /**
  * Escape regex characters
@@ -146,47 +148,47 @@ function isVueComponent(c) {
  */
 
 function escapeRegExpChars(value) {
-    if (!value) return value // eslint-disable-next-line
+  if (!value) return value; // eslint-disable-next-line
 
-    return value.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&')
+  return value.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 }
 function multiColumnSort(inputArray, sortingPriority) {
-    // clone it to prevent the any watchers from triggering every sorting iteration
-    var array = JSON.parse(JSON.stringify(inputArray))
+  // clone it to prevent the any watchers from triggering every sorting iteration
+  var array = JSON.parse(JSON.stringify(inputArray));
 
-    var fieldSorter = function fieldSorter(fields) {
-        return function (a, b) {
-            return fields.map(function (o) {
-                var dir = 1
+  var fieldSorter = function fieldSorter(fields) {
+    return function (a, b) {
+      return fields.map(function (o) {
+        var dir = 1;
 
-                if (o[0] === '-') {
-                    dir = -1
-                    o = o.substring(1)
-                }
-
-                return a[o] > b[o] ? dir : a[o] < b[o] ? -dir : 0
-            }).reduce(function (p, n) {
-                return p || n
-            }, 0)
+        if (o[0] === '-') {
+          dir = -1;
+          o = o.substring(1);
         }
-    }
 
-    return array.sort(fieldSorter(sortingPriority))
+        return a[o] > b[o] ? dir : a[o] < b[o] ? -dir : 0;
+      }).reduce(function (p, n) {
+        return p || n;
+      }, 0);
+    };
+  };
+
+  return array.sort(fieldSorter(sortingPriority));
 }
 function createNewEvent(eventName) {
-    var event
+  var event;
 
-    if (typeof Event === 'function') {
-        event = new Event(eventName)
-    } else {
-        event = document.createEvent('Event')
-        event.initEvent(eventName, true, true)
-    }
+  if (typeof Event === 'function') {
+    event = new Event(eventName);
+  } else {
+    event = document.createEvent('Event');
+    event.initEvent(eventName, true, true);
+  }
 
-    return event
+  return event;
 }
 function toCssWidth(width) {
-    return width === undefined ? null : isNaN(width) ? width : width + 'px'
+  return width === undefined ? null : isNaN(width) ? width : width + 'px';
 }
 /**
  * Return month names according to a specified locale
@@ -196,21 +198,21 @@ function toCssWidth(width) {
  */
 
 function getMonthNames() {
-    var locale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined
-    var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'long'
-    var dates = []
+  var locale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
+  var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'long';
+  var dates = [];
 
-    for (var i = 0; i < 12; i++) {
-        dates.push(new Date(2000, i, 15))
-    }
+  for (var i = 0; i < 12; i++) {
+    dates.push(new Date(2000, i, 15));
+  }
 
-    var dtf = new Intl.DateTimeFormat(locale, {
-        month: format,
-        timezome: 'UTC'
-    })
-    return dates.map(function (d) {
-        return dtf.format(d)
-    })
+  var dtf = new Intl.DateTimeFormat(locale, {
+    month: format,
+    timezome: 'UTC'
+  });
+  return dates.map(function (d) {
+    return dtf.format(d);
+  });
 }
 /**
  * Return weekday names according to a specified locale
@@ -221,24 +223,24 @@ function getMonthNames() {
  */
 
 function getWeekdayNames() {
-    var locale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined
-    var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'narrow'
-    var dates = []
-    var dt = new Date(2000, 0, 1)
-    var dayOfWeek = dt.getDay()
-    dt.setDate(dt.getDate() - dayOfWeek)
+  var locale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
+  var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'narrow';
+  var dates = [];
+  var dt = new Date(2000, 0, 1);
+  var dayOfWeek = dt.getDay();
+  dt.setDate(dt.getDate() - dayOfWeek);
 
-    for (var i = 0; i < 7; i++) {
-        dates.push(new Date(dt.getFullYear(), dt.getMonth(), dt.getDate() + i))
-    }
+  for (var i = 0; i < 7; i++) {
+    dates.push(new Date(dt.getFullYear(), dt.getMonth(), dt.getDate() + i));
+  }
 
-    var dtf = new Intl.DateTimeFormat(locale, {
-        weekday: format,
-        timezome: 'UTC'
-    })
-    return dates.map(function (d) {
-        return dtf.format(d)
-    })
+  var dtf = new Intl.DateTimeFormat(locale, {
+    weekday: format,
+    timezome: 'UTC'
+  });
+  return dates.map(function (d) {
+    return dtf.format(d);
+  });
 }
 /**
  * Accept a regex with group names and return an object
@@ -250,28 +252,28 @@ function getWeekdayNames() {
  */
 
 function matchWithGroups(pattern, str) {
-    var matches = str.match(pattern)
-    return pattern // get the pattern as a string
-        .toString() // suss out the groups
-        .match(/<(.+?)>/g) // remove the braces
-        .map(function (group) {
-            var groupMatches = group.match(/<(.+)>/)
+  var matches = str.match(pattern);
+  return pattern // get the pattern as a string
+  .toString() // suss out the groups
+  .match(/<(.+?)>/g) // remove the braces
+  .map(function (group) {
+    var groupMatches = group.match(/<(.+)>/);
 
-            if (!groupMatches || groupMatches.length <= 0) {
-                return null
-            }
+    if (!groupMatches || groupMatches.length <= 0) {
+      return null;
+    }
 
-            return group.match(/<(.+)>/)[1]
-        }) // create an object with a property for each group having the group's match as the value
-        .reduce(function (acc, curr, index, arr) {
-            if (matches && matches.length > index) {
-                acc[curr] = matches[index + 1]
-            } else {
-                acc[curr] = null
-            }
+    return group.match(/<(.+)>/)[1];
+  }) // create an object with a property for each group having the group's match as the value
+  .reduce(function (acc, curr, index, arr) {
+    if (matches && matches.length > index) {
+      acc[curr] = matches[index + 1];
+    } else {
+      acc[curr] = null;
+    }
 
-            return acc
-        }, {})
+    return acc;
+  }, {});
 }
 /**
  * Based on
@@ -279,27 +281,27 @@ function matchWithGroups(pattern, str) {
  */
 
 function isWebpSupported() {
-    return new Promise(function (resolve) {
-        var image = new Image()
+  return new Promise(function (resolve) {
+    var image = new Image();
 
-        image.onerror = function () {
-            return resolve(false)
-        }
+    image.onerror = function () {
+      return resolve(false);
+    };
 
-        image.onload = function () {
-            return resolve(image.width === 1)
-        }
+    image.onload = function () {
+      return resolve(image.width === 1);
+    };
 
-        image.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA='
-    }).catch(function () {
-        return false
-    })
+    image.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
+  }).catch(function () {
+    return false;
+  });
 }
 function isCustomElement(vm) {
-    return 'shadowRoot' in vm.$root.$options
+  return 'shadowRoot' in vm.$root.$options;
 }
 var isDefined = function isDefined(d) {
-    return d !== undefined
-}
+  return d !== undefined;
+};
 
-export { bound, createAbsoluteElement, createNewEvent, escapeRegExpChars, getMonthNames, getValueByPath, getWeekdayNames, hasFlag, indexOf, isCustomElement, isDefined, isMobile, isVueComponent, isWebpSupported, matchWithGroups, merge, mod, multiColumnSort, removeElement, sign, toCssWidth }
+export { bound, createAbsoluteElement, createNewEvent, escapeRegExpChars, getMonthNames, getValueByPath, getWeekdayNames, hasFlag, indexOf, isCustomElement, isDefined, isMobile, isVueComponent, isWebpSupported, matchWithGroups, merge, mod, multiColumnSort, removeElement, sign, toCssWidth };

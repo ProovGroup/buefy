@@ -152,7 +152,7 @@ export default {
             return this.cancelOptions.indexOf('x') >= 0
         },
         customStyle() {
-            if (!this.fu²llScreen) {
+            if (!this.fullScreen) {
                 return { maxWidth: this.newWidth }
             }
             return null
