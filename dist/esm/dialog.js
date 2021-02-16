@@ -4,7 +4,7 @@ import { c as config, V as VueInstance } from './chunk-ce068f0a.js'
 import { I as Icon } from './chunk-dd816773.js'
 import { _ as __vue_normalize__, r as registerComponent, a as registerComponentProgrammatic, u as use } from './chunk-cca88db8.js'
 import { t as trapFocus } from './chunk-42f463e6.js'
-import { M as Modal } from './chunk-54620ad6.js'
+import { M as Modal } from './chunk-82a54aea.js'
 
 var script = {
     name: 'BDialog',

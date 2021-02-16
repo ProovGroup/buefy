@@ -91,7 +91,7 @@ var script = {
       return typeof this.canCancel === 'boolean' ? this.canCancel ? __chunk_2.config.defaultModalCanCancel : [] : this.canCancel;
     },
     showX: function showX() {
-      return this.cancelOptions.indexOf('x') >= 0 && !this.hasModalCard;
+      return this.cancelOptions.indexOf('x') >= 0;
     },
     customStyle: function customStyle() {
       if (!this.fullScreen) {

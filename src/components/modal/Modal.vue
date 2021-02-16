@@ -149,10 +149,10 @@ export default {
                 : this.canCancel
         },
         showX() {
-            return this.cancelOptions.indexOf('x') >= 0 && !this.hasModalCard
+            return this.cancelOptions.indexOf('x') >= 0
         },
         customStyle() {
-            if (!this.fullScreen) {
+            if (!this.fu²llScreen) {
                 return { maxWidth: this.newWidth }
             }
             return null

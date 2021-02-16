@@ -3,8 +3,8 @@ import { merge } from './helpers.js'
 import { V as VueInstance } from './chunk-ce068f0a.js'
 import { r as registerComponent, a as registerComponentProgrammatic, u as use } from './chunk-cca88db8.js'
 import './chunk-42f463e6.js'
-import { M as Modal } from './chunk-54620ad6.js'
-export { M as BModal } from './chunk-54620ad6.js'
+import { M as Modal } from './chunk-82a54aea.js'
+export { M as BModal } from './chunk-82a54aea.js'
 
 var localVueInstance
 var ModalProgrammatic = {
