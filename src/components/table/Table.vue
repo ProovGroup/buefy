@@ -584,7 +584,7 @@ export default {
         * Splitted data based on the pagination.
         */
         visibleData() {
-            if (!this.paginated) return this.newData
+            if (!this.paginated || this.backendPagination) return this.newData
 
             const currentPage = this.newCurrentPage
             const perPage = this.perPage
